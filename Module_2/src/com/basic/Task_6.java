@@ -18,7 +18,7 @@ public class Task_6 {
 		for(int i = 1; i<=row; i++) {
 			int col = i;
 			for(int j = 1; j<=col; j++) {
-				System.out.print(j);
+				System.out.print(" "+j);
 			}
 			System.out.println("");
 		}
