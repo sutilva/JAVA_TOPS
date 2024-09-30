@@ -41,5 +41,6 @@ public class Task_13 {
 		
 		sq.displayShape();
 		sq.rectDisplay();
+		sq.squareDisplay();
 	}
 }
