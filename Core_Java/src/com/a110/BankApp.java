@@ -15,17 +15,6 @@ public class BankApp {
 		CustomerLogin cl = new CustomerLogin();
 		cl.getAccess(yourPass);
 		
-		//Trying to access protected member of class CustomerLogin by object of the same class
-		//String password = cl.password;
-		
-		try {
-			boolean try_access = cl.access;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		  
-		
 
 		// Set Initial Balance
 		System.out.println("Deposit Initial Amount");

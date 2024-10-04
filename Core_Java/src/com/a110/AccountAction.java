@@ -26,7 +26,9 @@ public class AccountAction extends CustomerLogin {
 			 System.out.println("Successfully Withdrawn !!");
 		 }
 		 else {
-			 System.out.println("Access Denied or Insufficient Balance !!");
+			 
+			 throw new ArithmeticException("Insufficient Balance");
+			 
 		 }
 	 }
 	 
@@ -36,7 +38,9 @@ public class AccountAction extends CustomerLogin {
 			 System.out.println("Successfully Deposited :-) ");
 		 }
 		 else {
-			 System.out.println("Access Denied or Invalid Amount :-( ");
+			 
+			 throw new ArithmeticException("Invalid Amount :-(");
+			
 		 }
 	 }
 
