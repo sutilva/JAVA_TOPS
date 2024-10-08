@@ -4,7 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -12,8 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-//import javax.swing.plaf.basic.BasicBorders.ToggleButtonBorder;
-//import javax.scene.control;
+
 
 public class RegistrationFormEx1 implements ActionListener{
 	
@@ -23,7 +22,7 @@ public class RegistrationFormEx1 implements ActionListener{
 	String courses[] = {"BTech", "ME/MTech", "PHD", "Pharmacy"};
 	String semester[] = {"Sem-1", "Sem-2", "Sem-3", "Sem-4","Sem-5","Sem-6","Sem-7","Sem-8"};
 	String branch[] = {"CE", "ME", "Civil", "EE", "IE"};
-	JComboBox cb_course, cb_semester, cb_branch;
+	JComboBox<String> cb_course, cb_semester, cb_branch;
 	JRadioButton rb_male, rb_female;
 	
 	JButton jb_register;
@@ -56,6 +55,8 @@ public class RegistrationFormEx1 implements ActionListener{
 		tf_dob.setBounds(138, 90, 96, 19);
 		frame.add(tf_dob);
 		
+		ButtonGroup bg = new ButtonGroup();
+		
 		lab_gender = new JLabel("Gender");
 		lab_gender.setBounds(54, 140, 60, 13);
 		frame.add(lab_gender);
@@ -63,10 +64,12 @@ public class RegistrationFormEx1 implements ActionListener{
 		rb_male = new JRadioButton("Male");
 		rb_male.setBounds(138, 136, 52, 21);
 		frame.add(rb_male);
+		bg.add(rb_male);
 		
 		rb_female = new JRadioButton("Female");
 		rb_female.setBounds(192, 136, 80, 21);
-		frame.add(rb_female);	
+		frame.add(rb_female);
+		bg.add(rb_female);
 		
 		lab_email = new JLabel("Mail_id");
 		lab_email.setBounds(54, 175, 69, 20);
