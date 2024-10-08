@@ -3,10 +3,15 @@ package com.a710;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Properties;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -14,10 +19,16 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.SqlDateModel;
+import org.jdatepicker.impl.UtilDateModel;
+
+
 public class RegistrationFormEx1 implements ActionListener{
 	
 	JFrame frame;
-	JTextField tf_name, tf_mobile, tf_email, tf_dob;
+	JTextField tf_name, tf_mobile, tf_email;
 	JPasswordField pf_password, pf_confirmPassword;
 	String courses[] = {"BTech", "ME/MTech", "PHD", "Pharmacy"};
 	String semester[] = {"Sem-1", "Sem-2", "Sem-3", "Sem-4","Sem-5","Sem-6","Sem-7","Sem-8"};
@@ -27,6 +38,11 @@ public class RegistrationFormEx1 implements ActionListener{
 	
 	JButton jb_register;
 	JLabel lab_title, lab_name, lab_mobile, lab_email, lab_dob, lab_password, lab_confirmPassword, lab_courses, lab_sem, lab_branch, lab_gender;
+	
+	JDatePickerImpl datePicker;
+	
+	
+	
 	
 	public RegistrationFormEx1() {
 		
@@ -48,12 +64,43 @@ public class RegistrationFormEx1 implements ActionListener{
 		
 		lab_dob = new JLabel("DOB");
 		lab_dob.setBounds(54, 93, 60, 13);
-		frame.add(lab_dob);
-		
-		tf_dob = new JTextField();
-		tf_dob.setColumns(10);
-		tf_dob.setBounds(138, 90, 96, 19);
-		frame.add(tf_dob);
+		frame.add(lab_dob);		
+
+		SqlDateModel model = new SqlDateModel();
+		model.setSelected(true);
+		Properties p = new Properties();
+		p.put("text.day", "Day");
+		p.put("text.month", "Month");
+		p.put("text.year", "Year");
+		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new AbstractFormatter() {
+
+			@Override
+			public Object stringToValue(String text) throws ParseException {
+				// TODO Auto-generated method stub
+				
+				return null;
+			}
+
+			@Override
+			public String valueToString(Object value) throws ParseException {
+				// TODO Auto-generated method stub
+				if(value != null) {
+					Calendar cal = (Calendar) value;
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+					String strDate = dateFormat.format(cal.getTime());
+					return strDate;
+				}
+				else {
+					return "";
+				}
+			}
+			
+		});
+	
+		datePicker.setBounds(138, 90, 130, 40);
+		 
+		frame.add(datePicker);
 		
 		ButtonGroup bg = new ButtonGroup();
 		
