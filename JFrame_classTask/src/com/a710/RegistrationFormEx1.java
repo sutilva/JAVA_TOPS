@@ -98,8 +98,7 @@ public class RegistrationFormEx1 implements ActionListener{
 			
 		});
 	
-		datePicker.setBounds(138, 90, 130, 40);
-		 
+		datePicker.setBounds(138, 90, 130, 40);		 
 		frame.add(datePicker);
 		
 		ButtonGroup bg = new ButtonGroup();
