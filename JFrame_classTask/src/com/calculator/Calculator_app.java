@@ -61,9 +61,9 @@ Calculator_app(){
 	bmod=new Button("%");
 	  bmod.setBounds(190,130,50,50);
 	bcalc=new Button("=");
-	  bcalc.setBounds(245,410,65,50);
+	  bcalc.setBounds(260,410,50,50);
 	bclr=new Button("CE"); 
-	  bclr.setBounds(50,130,65,50);
+	  bclr.setBounds(50,130,50,50);
 	
 	
 	b1.addActionListener(this); 
