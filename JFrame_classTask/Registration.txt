@@ -1,0 +1,10 @@
+Name: Shiv Tilva
+Date of Birth: null
+Gender: Male
+Mail: shiv@gmail.com
+Moble: 9999999999
+Password: shiv123
+Re-Password: shiv123
+Course: PHD
+Branch: CE
+Semester: Sem-2

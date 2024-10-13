@@ -1,8 +1,14 @@
 package com.a710;
 
+import java.awt.*;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,6 +17,7 @@ import java.util.Properties;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,13 +26,13 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.SqlDateModel;
-import org.jdatepicker.impl.UtilDateModel;
+import org.jdatepicker.impl.*;
+import org.jdatepicker.JDatePanel;
+import org.jdatepicker.JDatePicker;
 
 
-public class RegistrationFormEx1 implements ActionListener{
+
+public class RegistrationFormEx1 extends WindowAdapter implements ActionListener{
 	
 	JFrame frame;
 	JTextField tf_name, tf_mobile, tf_email;
@@ -73,18 +80,10 @@ public class RegistrationFormEx1 implements ActionListener{
 		p.put("text.month", "Month");
 		p.put("text.year", "Year");
 		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new AbstractFormatter() {
-
-			@Override
-			public Object stringToValue(String text) throws ParseException {
-				// TODO Auto-generated method stub
-				
-				return null;
-			}
-
+		AbstractFormatter formatter = new AbstractFormatter() {
+			
 			@Override
 			public String valueToString(Object value) throws ParseException {
-				// TODO Auto-generated method stub
 				if(value != null) {
 					Calendar cal = (Calendar) value;
 					SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
@@ -96,7 +95,14 @@ public class RegistrationFormEx1 implements ActionListener{
 				}
 			}
 			
-		});
+			@Override
+			public Object stringToValue(String text) throws ParseException {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
+		
+		datePicker = new JDatePickerImpl(datePanel, formatter);
 	
 		datePicker.setBounds(138, 90, 130, 40);		 
 		frame.add(datePicker);
@@ -179,6 +185,9 @@ public class RegistrationFormEx1 implements ActionListener{
 		jb_register = new JButton("REGISTER");
 		jb_register.setBounds(138, 513, 96, 37);
 		frame.add(jb_register);
+		jb_register.addActionListener(this);
+		
+		frame.addWindowListener(this);
 				
 		
 		frame.setSize(500,700);
@@ -187,14 +196,83 @@ public class RegistrationFormEx1 implements ActionListener{
 		
 	}
 	
+	public void windowClosing(WindowEvent w) {
+		  frame.dispose();
+		  
+		}
+	
 	public static void main(String[] args) {
 		
 		new RegistrationFormEx1();
 	}
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		if(e.getSource() == jb_register) {
+			
+			String name_field, gender_field = null, dob_field = null, mail_field, mobile_field, password_field, confirmPassword_field, course_field = null, branch_field = null, semester_field = null;
+			
+			
+			name_field = tf_name.getText().toString();
+			
+			
+			
+			//dob_field = datePicker.getVa
+			if(rb_male.isSelected()) {
+				gender_field = "Male";
+			}
+			
+			else if(rb_female.isSelected()) {
+				gender_field = "Female";
+			}
+			
+			else {
+				gender_field = null;
+			}
+			
+			mail_field = tf_email.getText().toString();
+			mobile_field = tf_mobile.getText().toString();
+			password_field = pf_password.getText().toString();
+			confirmPassword_field = pf_confirmPassword.getText().toString();
+			
+			
+				course_field = cb_course.getSelectedItem().toString();			
+			
+				branch_field = cb_branch.getSelectedItem().toString();			
+			
+				semester_field = cb_semester.getSelectedItem().toString();
+				
+				try {
+					
+					final String path = "D:\\Java\\JAVA_TOPS\\JFrame_classTask";
+					File dir = new File(path);
+					
+					FileWriter fw = new FileWriter(new File(dir, "Registration.txt"));
+					
+					fw.write("Name: " + name_field + "\n");
+					fw.write("Date of Birth: " + dob_field + "\n");
+					fw.write("Gender: " + gender_field + "\n");
+					fw.write("Mail: " + mail_field + "\n");
+					fw.write("Moble: " + mobile_field + "\n");
+					fw.write("Password: " + password_field + "\n");
+					fw.write("Re-Password: " + confirmPassword_field + "\n");
+					fw.write("Course: " + course_field + "\n");
+					fw.write("Branch: " + branch_field + "\n");
+					fw.write("Semester: " + semester_field + "\n");
+					
+					fw.close();
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
+			
+			
+		}
 		
 		
 	}
