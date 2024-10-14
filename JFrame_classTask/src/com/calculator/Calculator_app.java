@@ -47,7 +47,7 @@ Calculator_app(){
 	  bneg.setBounds(50,410,50,50);
 	bpts=new Button(".");
 	  bpts.setBounds(190,410,50,50);
-	bback=new Button("back");
+	bback=new Button("BACK");
 	 bback.setBounds(120,130,50,50);
 	
 	badd=new Button("+");
@@ -98,7 +98,8 @@ Calculator_app(){
 	
 	frame.add(bclr); frame.add(bpts); frame.add(bneg); frame.add(bback);
 	
-	frame.setSize(360,500);  
+	frame.setSize(360,500); 
+	frame.setBackground(Color.DARK_GRAY);
 	frame.setLayout(null);  
 	frame.setVisible(true);  
 } 
