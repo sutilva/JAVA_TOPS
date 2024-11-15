@@ -32,7 +32,7 @@ public class SaveServlet extends HttpServlet
 		
 		if(status>0)
 		{
-			out.print("success");
+			resp.sendRedirect("ViewServlet");
 		}
 		else
 		{
