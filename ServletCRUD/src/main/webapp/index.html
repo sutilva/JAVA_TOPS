@@ -2,41 +2,59 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="style.css">
 <title>Insert title here</title>
 </head>
 <body>
 
 	 
-		<form action="insert" method="post">
-			<p>
-				Enter Name:<input type="text" name="name">
-			</p>
-			
-			<p>
-				Enter Surname:<input type="text" name="surname">
-			</p>
-			
-			<p>
-				Enter Email:<input type="email" name="email">
-			</p>
-			
-			<p>
-				Enter Password:<input type="password" name="password">
-			</p>
-			
-			<p>
-				<input type="submit" value="signup">
-			</p>
-		
-		</form>
-		
-		<form action="ViewServlet" method="get">
-		
-			<p>
-				<input type="submit" value="view">
-			</p>
-			
-		</form>
+		<div class="container">
+      <div class="text">
+         Form
+      </div>
+      <form action="insert" method="post">
+         <div class="form-row">
+            <div class="input-data">
+               <input type="text"  name="name">
+               <div class="underline"></div>
+               <label for="">First Name</label>
+            </div>
+            <div class="input-data">
+               <input type="text"  name="surname">
+               <div class="underline"></div>
+               <label for="">Last Name</label>
+            </div>
+         </div>
+         <div class="form-row">
+            <div class="input-data">
+               <input type="email"  name="email">
+               <div class="underline"></div>
+               <label for="">Email Address</label>
+            </div>
+            <div class="input-data">
+               <input type="password"  name="password">
+               <div class="underline"></div>
+               <label for="">Password</label>
+            </div>
+         </div>
+        
+            <div class="form-row submit-btn">
+               <div class="input-data">
+                  <div class="inner"></div>
+                  <input type="submit" value="signup">
+               </div>
+            </div>
+            
+            <div class="form-row submit-btn">
+               <div class="input-data">
+                  <div class="inner"></div>
+                  <input type="submit" value="view">
+               </div>
+            </div>
+            
+            
+      </form>
+      </div>
 	
 
 </body>
