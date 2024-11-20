@@ -19,7 +19,7 @@ public class DeleteServlet extends HttpServlet {
 		String id = req.getParameter("id");
 		int id2 = Integer.parseInt(id);
 		Dao.deletedata(id2);
-		resp.sendRedirect("ViewServlet");
+		resp.sendRedirect("DashboardServlet");
 	}
 
 }

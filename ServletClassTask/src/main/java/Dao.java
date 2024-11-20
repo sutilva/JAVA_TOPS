@@ -253,7 +253,7 @@ public class Dao {
 			
 			status = ps.executeUpdate();
 		}
-		catch (SQLException e) 
+		catch (Exception e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
