@@ -67,7 +67,7 @@ public class ViewServlet extends HttpServlet{
             for(Model m : list)
     		{
     			
-    			out.print("<tr><td>"+m.getId()+"</td><td>"+m.getName()+"</td><td>"+m.getSurname()+"</td><td>"+m.getEmail()+"</td><td>"+m.getPassword()+"</td><td><a href=''>Edit</a></td><td><a href='DeleteServlet?id="+m.getId()+"'>Delete</a></td><td></td></tr>");
+    			out.print("<tr><td>"+m.getId()+"</td><td>"+m.getName()+"</td><td>"+m.getSurname()+"</td><td>"+m.getEmail()+"</td><td>"+m.getPassword()+"</td><td><a href='EditServlet?id="+m.getId()+"'>Edit</a></td><td><a href='DeleteServlet?id="+m.getId()+"'>Delete</a></td><td></td></tr>");
     			
     		}
 

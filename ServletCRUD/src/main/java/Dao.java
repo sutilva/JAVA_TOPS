@@ -123,4 +123,79 @@ public class Dao
 		
 		return status;
 	}
+	
+	
+	public static Model editdata(int id)
+	{
+		Connection con = Dao.getconnect();
+		Model m = null;
+		try 
+		{
+			PreparedStatement ps = con.prepareStatement("select * from info where id=?");
+			
+			ps.setInt(1, id);
+			ResultSet set = ps.executeQuery();
+			
+			if(set.next())
+			{
+				int id1 = set.getInt(1);
+				String name =set.getString(2);
+				String surname = set.getString(3);
+				String email = set.getString(4);
+				String pass = set.getString(5);
+			
+				 m = new Model();
+				m.setId(id1);
+				m.setName(name);
+				m.setSurname(surname);
+				m.setEmail(email);
+				m.setPassword(pass);
+			}
+			
+		
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return m;
+		
+		
+	}
+	
+	public static int updatedata(Model m)
+	{
+		int status = 0;
+		Connection con = Dao.getconnect();
+		
+		
+		try 
+		{
+			PreparedStatement ps = con.prepareStatement("update info set name=?,surname=?,email=?,password=? where id=?");
+			
+			ps.setString(1,m.getName());
+			ps.setString(2,m.getSurname());
+			ps.setString(3,m.getEmail());
+			ps.setString(4,m.getPassword());
+			ps.setInt(5,m.getId());
+			status = ps.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return status;
+	}
+	
+	
+	
+	
+	
 }
