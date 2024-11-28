@@ -141,7 +141,7 @@ public class Dao
 				String email = set.getString(4);
 				String pass = set.getString(5);
 			
-				 m = new Model();
+				m = new Model();
 				m.setId(id1);
 				m.setName(name);
 				m.setSurname(surname);
