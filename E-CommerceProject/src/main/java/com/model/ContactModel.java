@@ -1,9 +1,10 @@
+
 package com.model;
 
 public class ContactModel 
 {
 	int id;
-	String fullname,email,query;
+	String fullname,email,query,status;
 	
 	public int getId() {
 		return id;
@@ -28,6 +29,12 @@ public class ContactModel
 	}
 	public void setQuery(String query) {
 		this.query = query;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	
