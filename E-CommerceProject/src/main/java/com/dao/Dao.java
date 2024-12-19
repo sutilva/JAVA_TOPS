@@ -628,7 +628,7 @@ public class Dao
 		
 	}
 	
-	public static int updatequerystatus(String option, String email) {
+	public static int updatequerystatus(String option, int id) {
 		
 		Connection con = Dao.getconnect();
 		int status = 0;
@@ -636,10 +636,10 @@ public class Dao
 		
 		
 		try {
-			PreparedStatement ps = con.prepareStatement("update contact set status=? where email=?");
+			PreparedStatement ps = con.prepareStatement("update contact set status=? where id=?");
 			
 			ps.setString(1, option);
-			ps.setString(2, email);
+			ps.setInt(2, id);
 			
 			status = ps.executeUpdate();
 			

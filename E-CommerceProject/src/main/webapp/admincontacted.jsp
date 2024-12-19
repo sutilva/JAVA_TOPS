@@ -123,7 +123,7 @@
 					<option value="<%=data2%>"><%=data2%></option>					
 				</select>
 				
-				<input type="hidden" name="email" value="<%=m.getEmail() %>">
+				<input type="hidden" name="id" value="<%=m.getId() %>">
 				<input type="submit" value="update">				
 				</td>	
 				</form>

@@ -16,9 +16,11 @@
 
 	<%
 		String option = request.getParameter("statusoption");
-		String email = request.getParameter("email");		
+		String id = request.getParameter("id");
+		int id2 = Integer.parseInt(id);
+		
 	
-		int status = Dao.updatequerystatus(option, email);
+		int status = Dao.updatequerystatus(option, id2);
 		
 		if(status>0)
 		{			
@@ -27,9 +29,7 @@
 		else 
 		{
 			System.out.println("error");
-		}
-	
-		
+		}		
 	%>
 		
 
